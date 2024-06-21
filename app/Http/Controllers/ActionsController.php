@@ -34,7 +34,9 @@ class ActionsController extends Controller
             'user.age.max' => 'Поле "Возраст" должно быть не более 200 лет',
         ]);
 
-        $user = User::create($request -> input('user'));
+        $userdata = $request->input('user');
+        $userdata['password'] = bcrypt($userdata['password']);
+        $user = User::create($userdata);
         Auth::login($user);
         return redirect('/');
     }
