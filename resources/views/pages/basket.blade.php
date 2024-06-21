@@ -48,6 +48,17 @@
                 <p>Общая сумма: {{ $total }}</p>
                 <form action="{{ route('cart.checkout') }}" method="POST">
                     @csrf
+                    <br>
+                    <label>Выберите способ оплаты</label>
+                    <div class="form-check">
+                        <input type="radio" name="paymentMethod" id="card" value="card" class="form-check-input" required>
+                        <label for="card" class="form-check-label">Оплатить картой</label>
+                    </div>
+                    <div class="form-check">
+                        <input type="radio" name="paymentMethod" id="cash" value="cash" class="form-check-input" required>
+                        <label for="cash" class="form-check-label">Оплатить наличными</label>
+                    </div>
+                    <br>
                     <div class="form-group">
                         <label for="address">Адрес доставки</label>
                         <input type="text" class="form-control" id="address" name="address" value="{{ Auth::user()->address }}" required>
