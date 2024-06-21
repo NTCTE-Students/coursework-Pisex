@@ -39,7 +39,7 @@ class ViewsController extends Controller
     public function basket()
     {
         return view("pages.basket", [
-            'products' => Basket::all(),
+            'products' => Basket::where('user_id', auth()->id())->get(),
         ]);
     }
 
